@@ -7,21 +7,21 @@ const getLocalUsers = () => {
   }
 
   return [];
-}
+};
 
 const getActiveUser = () => {
   const localActiveUser = localStorage.getItem('activeUser');
   return localActiveUser || null;
-}
+};
 
 export const usersStore = writable(getLocalUsers());
 
-usersStore.subscribe(value => {
+usersStore.subscribe((value) => {
   localStorage.setItem('users', JSON.stringify(value));
 });
 
 export const activeUserStore = writable(getActiveUser());
 
-activeUserStore.subscribe(value => {
+activeUserStore.subscribe((value) => {
   localStorage.setItem('activeUser', value);
 });

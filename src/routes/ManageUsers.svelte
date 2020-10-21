@@ -3,10 +3,11 @@
 
   let users = [];
 
-  usersStore.subscribe(value => {
+  usersStore.subscribe((value) => {
     users = value;
   });
 </script>
+
 <h1>Manage users</h1>
 
 <ul>
@@ -21,5 +22,5 @@
 
 <p><a href="#/add-user">Add user</a></p>
 
-<p><a href="#/">Done</a></p>
+<p><a href="#/">Back</a></p>
 

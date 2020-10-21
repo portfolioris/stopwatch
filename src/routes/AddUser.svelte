@@ -48,5 +48,5 @@
 {:else}
   <p>User added!</p>
   <p><a href="#/">Start</a></p>
-  <p><button type="button" on:click={() => formCompleted = false}>Add another user</button></p>
+  <p><button type="button" on:click={() => { formCompleted = false; }}>Add another user</button></p>
 {/if}

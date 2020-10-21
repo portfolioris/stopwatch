@@ -1,8 +1,8 @@
 <script>
-  export let error = null,
-    name = 'name',
-    label = 'label',
-    value = '';
+  export let error = null;
+  export let name = 'name';
+  export let label = 'label';
+  export let value = '';
 </script>
 
 <label for={name}>{label}</label>

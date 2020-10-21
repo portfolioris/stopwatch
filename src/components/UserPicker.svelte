@@ -1,16 +1,12 @@
 <script>
-  import { usersStore, activeUserStore } from '../stores';
+  import { activeUserStore } from '../stores';
 
-  let users = [];
+  export let users = [];
   export let activeUser;
 
-  usersStore.subscribe(value => {
-    users = value;
-  });
-
-  const setActiveUser = function (userName) {
+  const setActiveUser = (userName) => {
     activeUserStore.set(userName);
-  }
+  };
 </script>
 
 {#if users}
