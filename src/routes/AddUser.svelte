@@ -1,12 +1,13 @@
 <script>
   import { usersStore, activeUserStore } from '../stores';
+  import FormField from '../components/FormField.svelte';
 
-  let userName = '',
-    error = null,
-    users = [],
-    formCompleted = false;
+  let userName = '';
+  let error = null;
+  let users = [];
+  let formCompleted = false;
 
-  usersStore.subscribe(value => {
+  usersStore.subscribe((value) => {
     users = value;
   });
 
@@ -33,18 +34,12 @@
 {#if !formCompleted}
   <form method="post" action="" on:submit|preventDefault={handleSubmit}>
 
-    <label for="userName">Name</label>
-    <input
-      id="userName"
+    <FormField
       bind:value={userName}
-      aria-describedby={error ? 'userName-error' : null}
-      required
-      autocomplete="given-name"
-    >
-
-    {#if error}
-      <div id="userName-error">{error}</div>
-    {/if}
+      error={error}
+      name="userName"
+      label="Username"
+    />
 
     <button type="submit">Save</button>
   </form>
