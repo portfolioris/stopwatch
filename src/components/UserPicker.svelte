@@ -14,7 +14,7 @@
     {#each users as user}
       <li>
         <button type="button" on:click={setActiveUser(user.userName)}>
-          {user.userName} {#if user.userName === activeUser}(current){/if}
+          {user.userName} {#if user.userName === activeUser.userName}(current){/if}
         </button>
       </li>
     {/each}

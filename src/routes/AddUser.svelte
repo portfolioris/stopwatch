@@ -18,7 +18,10 @@
     }
 
     usersStore.update((u) => {
-      u.push({ userName });
+      u.push({
+        userName,
+        times: [],
+      });
       return u;
     });
 
@@ -44,9 +47,10 @@
     <button type="submit">Save</button>
   </form>
 
-  <p><a href="#/">Back</a></p>
 {:else}
   <p>User added!</p>
-  <p><a href="#/">Start</a></p>
   <p><button type="button" on:click={() => { formCompleted = false; }}>Add another user</button></p>
 {/if}
+
+<p><a href="#/manage-users">Back</a></p>
+

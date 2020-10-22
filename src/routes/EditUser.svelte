@@ -65,5 +65,6 @@
   </form>
 
   <button type="button" on:click={handleDelete}>Delete user</button>
+  <a href="#/manage-users">Back</a>
 {/if}
 
