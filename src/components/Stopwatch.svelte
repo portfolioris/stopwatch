@@ -1,7 +1,8 @@
 <script>
   import { usersStore } from '../stores';
-
+  // props
   export let activeUser;
+  // component vars
   let currentTime = Date.now();
   let startTime = null;
   let endTime = null;

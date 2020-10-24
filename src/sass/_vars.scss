@@ -1,0 +1,5 @@
+@use 'node_modules/@supple-kit/supple-css/tools/space';
+$space-base: space.get('base');
+$space-tiny: space.get('tiny');
+$space-large: space.get('large');
+$space-small: space.get('small');

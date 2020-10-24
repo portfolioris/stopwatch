@@ -2,6 +2,7 @@
   import { usersStore, activeUserStore } from '../stores';
   import UserPicker from '../components/UserPicker.svelte';
   import Stopwatch from '../components/Stopwatch.svelte';
+  import Layer from '../components/atoms/objects/Layer.svelte';
 
   let activeUsername = null;
   let users = [];
@@ -22,6 +23,8 @@
 {:else if !activeUser}
   <p>No active user</p>
 {:else}
-  <UserPicker users={users} activeUser={activeUser} />
+  <Layer size="base">
+    <UserPicker users={users} activeUser={activeUser} />
+  </Layer>
   <Stopwatch activeUser={activeUser} />
 {/if}

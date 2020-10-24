@@ -22,4 +22,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/no-mutable-exports': 0,
   },
+  settings: {
+    'svelte3/ignore-styles': () => true,
+  },
 };

@@ -1,6 +1,6 @@
 <script>
   import { usersStore, activeUserStore } from '../stores';
-  import FormField from '../components/FormField.svelte';
+  import FormField from '../components/molecules/FormField.svelte';
 
   let userName = '';
   let error = null;

@@ -1,0 +1,15 @@
+//@use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/generic/reset';
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100;500;900&display=swap');
+
+html {
+	font-family: 'Big Shoulders Text', cursive;
+}
+
+/* Elements */
+//@use 'generic/font-face';
+//@use 'generic/toplevel';
+//@use 'generic/headings';
+
+//@use 'node_modules/@supple-kit/supple-css/utilities/visually-hidden';
