@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
+import svgo from 'rollup-plugin-svgo';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -76,6 +77,9 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
+
+    // svgo
+    svgo(),
   ],
   watch: {
     clearScreen: false,
