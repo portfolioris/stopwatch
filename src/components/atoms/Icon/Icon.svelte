@@ -1,24 +1,32 @@
 <script>
-  import on from './svg/on.svg';
+  import './svg/on.svg';
 
   export let icon = null;
 
+  /*
   const icons = {
     on,
   };
+  */
 </script>
 
 <style type="text/scss" lang="scss">
-	@use '../../../sass/vars';
+  @use '../../../sass/vars';
 
-	:global {
-		svg {
-			display: block;
-			inline-size: vars.$line-height;
-			block-size: vars.$line-height;
-			fill: currentColor;
-		}
-	}
+  :global {
+    .c-icon {
+      display: block;
+      inline-size: vars.$line-height;
+      block-size: vars.$line-height;
+      fill: currentColor;
+    }
+  }
 </style>
 
-{@html icons[icon]}
+<svg
+  class="c-icon"
+  aria-hidden="true"
+>
+  <use xlink:href={`/build/sprites.svg#${icon}`} />
+</svg>
+

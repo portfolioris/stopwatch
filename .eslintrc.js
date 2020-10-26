@@ -14,13 +14,16 @@ module.exports = {
     {
       files: ['*.svelte'],
       processor: 'svelte3/svelte3',
+      rules: {
+        'import/first': 0,
+        'import/prefer-default-export': 0,
+        'import/no-mutable-exports': 0,
+      },
     },
   ],
   extends: ['airbnb-base'],
   rules: {
-    'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'import/no-mutable-exports': 0,
   },
   settings: {
     'svelte3/ignore-styles': () => true,

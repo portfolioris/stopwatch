@@ -3,20 +3,15 @@
   import FormField from '../components/molecules/FormField.svelte';
 
   export let params;
-  let users = [];
   let error = null;
 
-  usersStore.subscribe((value) => {
-    users = value;
-  });
-
-  const currentUser = users.find((user) => user.userName === params.userName);
+  const currentUser = $usersStore.find((user) => user.userName === params.userName);
 
   let { userName } = currentUser;
 
   function handleSubmit() {
     // username exists
-    if (users.some((user) => user.userName === userName)) {
+    if ($usersStore.some((user) => user.userName === userName)) {
       error = 'This username has been taken.';
       return;
     }
@@ -29,7 +24,7 @@
 
     // update username
     currentUser.userName = userName;
-    const updatedUsers = users.map((user) => (
+    const updatedUsers = $usersStore.map((user) => (
       user.userName !== userName ? user : currentUser
     ));
 
@@ -38,7 +33,7 @@
   }
 
   function handleDelete() {
-    const updatedUsers = users.filter((user) => (
+    const updatedUsers = $usersStore.filter((user) => (
       user.userName !== userName
     ));
 

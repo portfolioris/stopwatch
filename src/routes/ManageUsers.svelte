@@ -1,17 +1,11 @@
 <script>
   import { usersStore } from '../stores';
-
-  let users = [];
-
-  usersStore.subscribe((value) => {
-    users = value;
-  });
 </script>
 
 <h1>Manage users</h1>
 
 <ul>
-  {#each users as user}
+  {#each $usersStore as user}
     <li>
       <a href={`#/manage-users/${user.userName}`}>
         {user.userName}

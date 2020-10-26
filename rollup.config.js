@@ -1,4 +1,5 @@
 import { eslint } from 'rollup-plugin-eslint';
+import stylelint from 'rollup-plugin-stylelint';
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -6,6 +7,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import svgo from 'rollup-plugin-svgo';
+import svgSprite from 'rollup-plugin-svg-sprite';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -39,9 +41,8 @@ export default {
     file: 'public/build/bundle.js',
   },
   plugins: [
-    eslint({
-      /* your options */
-    }),
+    eslint(),
+    stylelint(),
     svelte({
       preprocess: sveltePreprocess({
         scss: true,
@@ -79,7 +80,10 @@ export default {
     production && terser(),
 
     // svgo
-    svgo(),
+    // svgo(),
+    svgSprite({
+      outputFolder: 'public/build',
+    }),
   ],
   watch: {
     clearScreen: false,

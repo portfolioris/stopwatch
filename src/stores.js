@@ -20,8 +20,8 @@ usersStore.subscribe((value) => {
   localStorage.setItem('users', JSON.stringify(value));
 });
 
-export const activeUserStore = writable(getActiveUser());
+export const activeUserNameStore = writable(getActiveUser());
 
-activeUserStore.subscribe((value) => {
+activeUserNameStore.subscribe((value) => {
   localStorage.setItem('activeUser', value);
 });

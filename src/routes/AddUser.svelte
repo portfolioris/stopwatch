@@ -1,18 +1,13 @@
 <script>
-  import { usersStore, activeUserStore } from '../stores';
+  import { usersStore, activeUserNameStore } from '../stores';
   import FormField from '../components/molecules/FormField.svelte';
 
   let userName = '';
   let error = null;
-  let users = [];
   let formCompleted = false;
 
-  usersStore.subscribe((value) => {
-    users = value;
-  });
-
   function handleSubmit() {
-    if (users.some((user) => user.userName === userName)) {
+    if ($usersStore.some((user) => user.userName === userName)) {
       error = 'This username has been taken.';
       return;
     }
@@ -25,8 +20,9 @@
       return u;
     });
 
-    activeUserStore.set(userName);
+    activeUserNameStore.set(userName);
 
+    // reset form
     userName = '';
     formCompleted = true;
   }

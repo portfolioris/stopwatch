@@ -4,7 +4,7 @@
   import ManageUsers from './routes/ManageUsers.svelte';
   import EditUser from './routes/EditUser.svelte';
   import Main from './routes/Main.svelte';
-  import Layout from './components/Layout.svelte';
+  import Template from './components/Template.svelte';
 
   const routes = {
     '/': Main,
@@ -14,6 +14,6 @@
   };
 </script>
 
-<Layout>
+<Template>
   <Router {routes} />
-</Layout>
+</Template>

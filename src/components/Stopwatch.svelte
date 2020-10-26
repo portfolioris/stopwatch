@@ -1,5 +1,6 @@
 <script>
   import { usersStore } from '../stores';
+
   // props
   export let activeUser;
   // component vars
@@ -8,11 +9,6 @@
   let endTime = null;
   let interval = null;
   let state = 'ready';
-  let users = [];
-
-  usersStore.subscribe((value) => {
-    users = value;
-  });
 
   const startTimer = () => {
     interval = setInterval(() => {
@@ -46,7 +42,7 @@
       time: endTime - startTime,
     });
 
-    const updatedUsers = users.map((user) => (
+    const updatedUsers = $usersStore.map((user) => (
       user.userName === activeUser.userName ? activeUser : user
     ));
 
