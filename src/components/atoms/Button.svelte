@@ -1,98 +1,122 @@
 <script>
+  import Icon from './Icon/Icon.svelte';
+
   export let href = null;
   export let type = null;
-  // export let label;
   export let icon = null;
-  export let hideLabel = false;
-  export let modifier = '';
   export let isActive = false;
-  export let onClick = null;
-
-  let className = '';
-  export { className as class };
 </script>
 
-<style lang="scss" type="text/scss">
+<style type="text/scss" lang="scss">
   @use 'src/sass/vars';
-
-  /*  Block
-      ========================================================================= */
-
-  /**
-   * 2. Calculates the space around the button minus the fixed border-width
-   */
+  @use 'node_modules/@supple-kit/supple-css/tools/typography';
 
   .c-button {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0;
-    border: none; //$c-button--border-width solid $c-button--background-color;
-    border-radius: 0;
-    //font-family: vars.$font-family-secondary;
-    line-height: 1;
-    font-weight: 500;
-    text-decoration: none;
-    background-color: var(--green); // $green; // $c-button--background-color;
-    //color: vars.$color-black; // $c-button--color;
-    appearance: none;
-    //transition: vars.$base-transition-duration-short vars.$base-timing-function;
-    transition-property: color;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    &:hover,
-    &:active,
-    &:focus,
-    &[aria-current='true'] {
-      background-color: var(--green);
-      //color: vars.$color-black;
-      text-decoration: none;
-      outline: none;
+  .button__shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    background-image:
+      repeating-linear-gradient(135deg, #00000088, #ffffffdd 50%, #00000088),
+      repeating-radial-gradient(#ffffffff, #000000ff 2px);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px 4px #00000088;
+    position: relative;
+    margin-block-end: vars.$space-tiny;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      background-color: transparent;
+      border: 2px solid #00ff0011;
+      border-radius: 50%;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: 12px;
+      background-color: transparent;
+      border-radius: 50%;
+      box-shadow:
+        1px 1px 2px #ffffffff,
+        -1px -1px 2px 1px #00000088;
+    }
+
+    :global {
+      svg {
+        filter: drop-shadow(-1px -1px 1px #00000088);
+        color: #00000044;
+      }
     }
   }
 
-
-
-  /*  Elements
-      ========================================================================= */
-
-  .c-button__inner {
-    display: inline-flex;
-    align-items: stretch;
+  .button__label {
+    @include typography.font-size(24px);
+    text-shadow:
+      0 -1px 1px #ffffff88,
+      1px 1px 1px #000000ff;
   }
 
-  .c-button__label {
-    display: flex;
-    padding: vars.$space-small;
+  .c-button[aria-current] {
+    .button__shape {
+      box-shadow:
+        0 2px 8px 4px #00000088,
+        0 0 80px #00ff0033;
+
+      &::after {
+        border-color: #00ff00ff;
+      }
+
+      :global {
+        svg {
+          filter: drop-shadow(-1px -1px 1px #00000088) drop-shadow(0 0 10px #00ff00ff);
+          color: #00ff0066;
+        }
+      }
+    }
   }
 
-
-
-  /*  Modifier
-      ========================================================================= */
-
-  .c-button--transparent {
-    background-color: var(--transparent-green);
-    //color: vars.$color-white;
-  }
 </style>
 
-
-
-<a
-  href={href}
-  type={type}
-  class="c-button  {className}"
-  aria-current={isActive ? 'true' : null}
-  class:c-button--transparent={modifier === 'transparent'}
-  on:click={onClick}
->
-  <span class="c-button__inner">
-    <span class="c-button__label" class:u-visually-hidden="{hideLabel}">
+{#if type}
+  <button
+    type={type}
+    class="c-button"
+    aria-current={isActive ? 'true' : null}
+    on:click
+  >
+    <span class="button__shape">
+      <Icon icon={icon} />
+    </span>
+    <span class="button__label">
       <slot />
     </span>
-    {#if icon}
-      <span class="c-button__wrap-icon">
-        <mark>icon</mark>
-      </span>
-    {/if}
-  </span>
-</a>
+  </button>
+{/if}
+
+{#if href}
+  <a
+    href={href}
+    class="c-button"
+    aria-current={isActive ? 'true' : null}
+  >
+    <span class="button__shape">
+      <Icon icon={icon} />
+    </span>
+    <span class="button__label">
+      <slot />
+    </span>
+  </a>
+{/if}
+

@@ -58,6 +58,15 @@
   }
 </script>
 
+<style type="text/scss" lang="scss">
+  @use 'node_modules/@supple-kit/supple-css/tools/typography';
+
+  .huge {
+    @include typography.font-size(180px);
+    font-variant-numeric: lining-nums;
+  }
+</style>
+
 {#if state === 'ready'}
 
   <h1>Ready {activeUser.userName}?</h1>
@@ -71,7 +80,7 @@
 
   {#if startTime > currentTime}
     <h1>Countdown</h1>
-    {startTime - currentTime}
+    <div class="huge">{Math.ceil((startTime - currentTime) / 1000)}</div>
   {:else}
     <h1>Running</h1>
     <p>{ currentTime - startTime }</p>

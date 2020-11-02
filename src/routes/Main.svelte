@@ -25,24 +25,48 @@
 </script>
 
 {#if !$usersStore.length}
-  <Flow space="tiny">
+  <Flow>
     <h1>The Stopwatch</h1>
-    <Layout gap="base" alignInline="center">
+    <Layout gap="huge" alignInline="center">
       <Cell fit>
-        <Button onClick="{createSingleUser}">Single player</Button>
+        <Button type="button" on:click={createSingleUser} icon="on">Single player</Button>
       </Cell>
       <Cell fit>
-        <Button>Multiplayer</Button>
+        <Button type="button" icon="on">Multiplayer</Button>
       </Cell>
     </Layout>
-    <!--    <p>No users created. <a href="#/add-user">Create one</a>.</p>-->
   </Flow>
 
 {:else if !activeUser}
   <p>No active user</p>
 {:else}
-  <Layer size="base">
-    <UserPicker users={$usersStore} activeUserName={$activeUserNameStore} />
-  </Layer>
-  <Stopwatch activeUser={activeUser} />
+
+  <div class="grid">
+    <header>
+      <Layer size="base">
+        <UserPicker users={$usersStore} activeUserName={$activeUserNameStore} />
+      </Layer>
+    </header>
+
+    <main>
+      <Stopwatch activeUser={activeUser} />
+    </main>
+
+    <footer>
+      <p><a href="#/manage-users">Manage users</a></p>
+    </footer>
+  </div>
 {/if}
+
+<style type="text/scss" lang="scss">
+  .grid {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr auto 1fr;
+    justify-items: center;
+  }
+
+  footer {
+    align-self: end;
+  }
+</style>

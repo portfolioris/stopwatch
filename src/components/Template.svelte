@@ -2,9 +2,9 @@
   @use 'src/sass/leading';
 
   html,
-  body,
-  main {
+  body {
     height: 100%;
+    overflow: auto;
   }
 
   html {
@@ -15,17 +15,6 @@
       linear-gradient(90deg, rgb(37, 37, 37), rgb(37, 37, 37));
     color: #ffffff;
   }
-
-  main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
 </style>
 
-<main>
-  <div>
-    <slot />
-  </div>
-</main>
+<slot />
