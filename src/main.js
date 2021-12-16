@@ -1,7 +1,5 @@
 import App from './Router.svelte';
 
-const app = new App({
-  target: document.body,
+window.app = new App({
+  target: document.getElementById('app'),
 });
-
-export default app;
