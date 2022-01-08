@@ -1,0 +1,21 @@
+{
+  "name": "The Stopwatch",
+  "short_name": "stopwatch",
+  "description": "Progressive Web App that provides a stopwatch for 1 or more players in any real life game or competition.",
+  "icons": [
+    {
+      "src": "icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "fullscreen",
+  "theme_color": "#B12A34",
+  "background_color": "#B12A34"
+}

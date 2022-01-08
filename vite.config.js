@@ -3,6 +3,11 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess';
 
 export default defineConfig({
+  server: {
+    host: true,
+    port: 12000,
+    https: true,
+  },
   plugins: [
     svelte({
       preprocess: sveltePreprocess({

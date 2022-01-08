@@ -1,11 +1,12 @@
 <script>
+  // import { Layout } from 'supple-ui-svelte';
   export let element = 'div';
   export let alignInline = null;
   export let gap = null;
   export let hasEqualheight = false;
 </script>
 
-<style lang="scss" type="text/scss">
+<style lang="scss">
   @use 'src/sass/vars';
   @use 'node_modules/@supple-kit/supple-css/objects/layout' with (
     $gaps: ('base', 'huge')
